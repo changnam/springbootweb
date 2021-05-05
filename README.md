@@ -45,6 +45,7 @@ spring.thymeleaf.view-names=thymeleaf/*
 
 --------------------------xml 셋팅 --------------------------------
 
+<!--
 <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
      <property name="prefix" value="/WEB-INF/views/" />
      <property name="suffix" value=".html" />
@@ -58,6 +59,7 @@ spring.thymeleaf.view-names=thymeleaf/*
      <property name="viewNames" value="jsp/*" />
      <property name="suffix" value=".jsp" />
 </bean>
+-->
 
 -------------------------------------------------------------------
 
