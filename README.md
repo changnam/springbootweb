@@ -25,6 +25,8 @@ templates/thymeleaf
 
 jsp 와 thymeleaf 의 viewResolver order 를 사용하여, 우선순위를 변경할수 있다. (기본은 thymeleaf 의 order 값이 작음 (우선순위 높음)
 
+thymeleaf view resolver 를 extend 하여 해당 view 가 없으면, null 을 return 하도록 구성하면, jsp view 를 찾아가게 할수 있다.
+
 -------------------------------------------------------------------
 
 Anyway, the tomcat-embed-jasper is marked as provided, so indicates that you expect the JDK or a container to provide the dependency at runtime. This scope is only available on the compilation and test classpath, and is not transitive.
