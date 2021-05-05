@@ -21,6 +21,9 @@ src/main/webapp/WEB-INF/jsp
 
 templates/thymeleaf
 
+
+------------------ xml 설정 -------------------
+![image](https://user-images.githubusercontent.com/31008617/117141032-094da200-ade9-11eb-935d-46e39b9733c6.png)
 -------------------------------------------------------------------
 
 jsp 와 thymeleaf 의 viewResolver order 를 사용하여, 우선순위를 변경할수 있다. (기본은 thymeleaf 의 order 값이 작음 (우선순위 높음). internalResourceNameResolver를 가장 낮게할것. (view가 없으면 exception 발생)
@@ -35,33 +38,15 @@ spring.mvc.view.suffix=.jsp
 
 spring.mvc.view-names=jsp/*
 
-
-
-spring.thymeleaf.prefix=/templates/
+spring.thymeleaf.prefix=classpath:templates/
 
 spring.thymeleaf.suffix=.html
 
+spring.thymeleaf.order=0
+
 spring.thymeleaf.view-names=thymeleaf/*
 
---------------------------xml 셋팅 --------------------------------
-
-<!--
-<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
-     <property name="prefix" value="/WEB-INF/views/" />
-     <property name="suffix" value=".html" />
-     <property name="viewNames" value="thymeleaf/*" />
-     <property name="templateMode" value="HTML5" />
-</bean>
-
-<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-     <property name="prefix" value="/WEB-INF/views/" />
-     <property name="viewNames" value="jsp/*" />
-     <property name="suffix" value=".jsp" />
-</bean>
--->
-
--------------------------------------------------------------------
+--------------------------------------------------------------------
 
 Anyway, the tomcat-embed-jasper is marked as provided, so indicates that you expect the JDK or a container to provide the dependency at runtime. This scope is only available on the compilation and test classpath, and is not transitive.
 In conclusion, the spring-boot-starter-web includes the tomcat embedded dependency but it doesn't includes the jasper embedded dependency, so that should be the reason to declare it separately.
