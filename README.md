@@ -30,10 +30,13 @@ spring properties file 을 사용하여 설정하도록 한다.
 --------------------------- properties 설정 -----------------------
 
 spring.mvc.view.prefix=/WEB-INF/jsp/
+
 spring.mvc.view.suffix=.jsp
 
 spring.thymeleaf.prefix=/templates/
+
 spring.thymeleaf.suffix=.html
+
 spring.thymeleaf.view-names=thymeleaf/*
 
 --------------------------xml 셋팅 --------------------------------
