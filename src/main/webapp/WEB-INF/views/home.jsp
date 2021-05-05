@@ -7,6 +7,6 @@
     <title>Insert title here</title>
 </head>
 <body>
-    Hello Spring Boot! this is home <span style="font-weight:bold;" > in jsp JSP </span> 
+    Hello Spring Boot! this is home in <span style="font-weight:bold;" > views JSP </span> 
 </body>
 </html>
