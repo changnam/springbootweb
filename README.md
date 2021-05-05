@@ -33,6 +33,10 @@ spring.mvc.view.prefix=/WEB-INF/jsp/
 
 spring.mvc.view.suffix=.jsp
 
+spring.mvc.view-names=jsp/*
+
+
+
 spring.thymeleaf.prefix=/templates/
 
 spring.thymeleaf.suffix=.html
