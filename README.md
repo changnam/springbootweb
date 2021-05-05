@@ -27,6 +27,8 @@ jsp 와 thymeleaf 의 viewResolver order 를 사용하여, 우선순위를 변�
 
 thymeleaf view resolver 를 extend 하여 해당 view 가 없으면, null 을 return 하도록 구성하면, jsp view 를 찾아가게 할수 있다.
 
+@EnableWebMvc 를 해줘야 기본 class가 동작하고, 해당 메소드들을 override 하여 설정할 수 있다.
+
 -------------------------------------------------------------------
 
 Anyway, the tomcat-embed-jasper is marked as provided, so indicates that you expect the JDK or a container to provide the dependency at runtime. This scope is only available on the compilation and test classpath, and is not transitive.
