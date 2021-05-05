@@ -3,6 +3,7 @@
 jsp 와 thymeleaf 를 동시에 사용하기 위해서는,
 
 spring.mvc.view.prefix=/WEB-INF/jsp/
+
 spring.mvc.view.suffix=.jsp
 
 spring.thymeleaf.view-names=thymeleaf/*
