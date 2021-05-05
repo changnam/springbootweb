@@ -23,11 +23,34 @@ templates/thymeleaf
 
 -------------------------------------------------------------------
 
-jsp 와 thymeleaf 의 viewResolver order 를 사용하여, 우선순위를 변경할수 있다. (기본은 thymeleaf 의 order 값이 작음 (우선순위 높음)
+jsp 와 thymeleaf 의 viewResolver order 를 사용하여, 우선순위를 변경할수 있다. (기본은 thymeleaf 의 order 값이 작음 (우선순위 높음). internalResourceNameResolver를 가장 낮게할것. (view가 없으면 exception 발생)
 
-thymeleaf view resolver 를 extend 하여 해당 view 가 없으면, null 을 return 하도록 구성하면, jsp view 를 찾아가게 할수 있다.
+spring properties file 을 사용하여 설정하도록 한다.
 
-@EnableWebMvc 를 해줘야 기본 class가 동작하고, 해당 메소드들을 override 하여 설정할 수 있다.
+--------------------------- properties 설정 -----------------------
+
+spring.mvc.view.prefix=/WEB-INF/jsp/
+spring.mvc.view.suffix=.jsp
+
+spring.thymeleaf.prefix=/templates/
+spring.thymeleaf.suffix=.html
+spring.thymeleaf.view-names=thymeleaf/*
+
+--------------------------xml 셋팅 --------------------------------
+
+<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+     <property name="prefix" value="/WEB-INF/views/" />
+     <property name="suffix" value=".html" />
+     <property name="viewNames" value="thymeleaf/*" />
+     <property name="templateMode" value="HTML5" />
+</bean>
+
+<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+     <property name="prefix" value="/WEB-INF/views/" />
+     <property name="viewNames" value="jsp/*" />
+     <property name="suffix" value=".jsp" />
+</bean>
 
 -------------------------------------------------------------------
 
