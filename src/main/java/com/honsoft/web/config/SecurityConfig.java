@@ -15,14 +15,16 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
+import com.honsoft.web.service.QuickGuideUserDetailsService;
+
 
 @Configuration
 @EnableWebSecurity (debug = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	DataSource dataSource;
-
+    private QuickGuideUserDetailsService quickGuideUserDetailsService;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/css/**", "/index").permitAll().antMatchers("/user/**").hasRole("USER")
@@ -32,18 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		
-	        auth
-	            .jdbcAuthentication()
-	            .dataSource(dataSource)
-	            .passwordEncoder(bCryptPasswordEncoder())
-	            .usersByUsernameQuery(
-	                "SELECT username, password, enabled from users where username = ?")
-	            .authoritiesByUsernameQuery(
-	                "SELECT u.username, a.authority " +
-	                "FROM authorities a, users u " +
-	                "WHERE u.username = ? " +
-	                "AND u.username = a.username"
-	            );
+	        auth.userDetailsService(quickGuideUserDetailsService);
 	}
 
 	@Bean
