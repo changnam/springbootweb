@@ -29,7 +29,7 @@ public class MainController {
 	@GetMapping("/user")
 	public String user(Model m) {
 		m.addAttribute("message", "Hello spring");
-		return "thymeleaf/user";
+		return "user";
 	}
 	
 	
