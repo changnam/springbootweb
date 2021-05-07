@@ -31,7 +31,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource).withUser(User.withUsername("user").password(bCryptPasswordEncoder().encode("pass")).roles("USER"));
+		
+	        auth
+	            .jdbcAuthentication()
+	            .dataSource(dataSource)
+	            .passwordEncoder(bCryptPasswordEncoder())
+	            .usersByUsernameQuery(
+	                "SELECT username, password, enabled from users where username = ?")
+	            .authoritiesByUsernameQuery(
+	                "SELECT u.username, a.authority " +
+	                "FROM authorities a, users u " +
+	                "WHERE u.username = ? " +
+	                "AND u.username = a.username"
+	            );
 	}
 
 	@Bean
