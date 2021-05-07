@@ -26,5 +26,7 @@ public class User {
 
     @Column(name = "enabled")
     private boolean enabled;
+    
+    private String email;
 
 }

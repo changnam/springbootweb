@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 	
+	@GetMapping("/")
+	public String index(Model m) {
+		m.addAttribute("message", "Hello spring");
+		return "thymeleaf/index";
+	}
+	
+	
 	@GetMapping("/home")
 	public String home(Model m) {
 		m.addAttribute("message", "Hello spring");
@@ -33,10 +40,12 @@ public class MainController {
 	}
 	
 	
-	@GetMapping("/login")
-	public String login(Model m) {
+
+	@GetMapping("/user/index")
+	public String userIndex(Model m) {
 		m.addAttribute("message", "Hello spring");
-		return "thymeleaf/login";
+		return "thymeleaf/home";
 	}
 	
+
 }
