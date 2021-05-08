@@ -11,10 +11,13 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.honsoft.web.filter.MyFilter;
 import com.honsoft.web.service.QuickGuideUserDetailsService;
 
 
@@ -28,7 +31,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/css/**", "/index").permitAll().antMatchers("/user/**").hasRole("USER")
-				.and().formLogin().loginPage("/login").permitAll().failureUrl("/login-error").and().csrf().disable();;
+				.and().formLogin().loginPage("/login").permitAll().failureUrl("/login-error").and().csrf().disable();
+		
+		http.httpBasic();
+		
+		http.addFilterAfter(new MyFilter(),UsernamePasswordAuthenticationFilter.class);
+		
+		//http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 
 	@Autowired

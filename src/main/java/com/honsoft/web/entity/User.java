@@ -27,6 +27,7 @@ public class User {
     @Column(name = "enabled")
     private boolean enabled;
     
+    @Transient
     private String email;
 
 }
