@@ -25,14 +25,7 @@ public class MainController {
 		m.addAttribute("message", "Hello spring");
 		return "home";
 	}
-	
-	@GetMapping("/welcome")
-	public String welcome(Model m) {
-		m.addAttribute("message", "Hello spring");
-		return "welcome";
-	}
-	
-	
+		
 	@GetMapping("/user")
 	public String user(Model m) {
 		m.addAttribute("message", "Hello spring");
