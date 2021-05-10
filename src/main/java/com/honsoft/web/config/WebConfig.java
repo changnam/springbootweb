@@ -1,6 +1,7 @@
 package com.honsoft.web.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -20,10 +21,5 @@ public class WebConfig implements WebMvcConfigurer {
 		   mediaType("json", MediaType.APPLICATION_JSON);
 	    }
 	 
-	 @Override
-		public void configureViewResolvers(ViewResolverRegistry registry) {
-			registry.jsp("/WEB-INF/jsp/", ".jsp");
-			System.out.println("******************");
-			
-		}
+
 }
