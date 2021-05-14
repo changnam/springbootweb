@@ -1,6 +1,9 @@
 package com.honsoft.web.config;
 
+<<<<<<< HEAD
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+=======
+>>>>>>> 596057ef64ea2ede3cde09e86305d28d50fd78c8
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,12 +32,17 @@ public class WebConfig implements WebMvcConfigurer {
 	    }
 	 
 	 @Bean
+<<<<<<< HEAD
 	 public FilterRegistrationBean requestLoggingFilter() {
+=======
+	 public CommonsRequestLoggingFilter requestLoggingFilter() {
+>>>>>>> 596057ef64ea2ede3cde09e86305d28d50fd78c8
 	     CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
 	     loggingFilter.setIncludeClientInfo(true);
 	     loggingFilter.setIncludeQueryString(true);
 	     loggingFilter.setIncludePayload(true);
 	     loggingFilter.setMaxPayloadLength(64000);
+<<<<<<< HEAD
 	     
 	     FilterRegistrationBean filter = new FilterRegistrationBean(loggingFilter);
 	     filter.addUrlPatterns("/*");
@@ -60,6 +68,23 @@ public class WebConfig implements WebMvcConfigurer {
 	  public ServletRegistrationBean myServlet() {
 	    ServletRegistrationBean bean = new ServletRegistrationBean(new MyServlet());
 	    bean.addUrlMappings("/myServlet");
+=======
+	     return loggingFilter;
+	 }
+
+
+	 @Bean
+	 public MyFilter myServletFilter() {
+		 MyFilter myFilter = new MyFilter();
+	     return myFilter;
+	 }
+
+		// Register Servlet
+	  @Bean
+	  public ServletRegistrationBean servletRegistrationBean() {
+	    ServletRegistrationBean bean = new ServletRegistrationBean(
+	        new MyServlet(), "/myServlet");
+>>>>>>> 596057ef64ea2ede3cde09e86305d28d50fd78c8
 	    return bean;
 	  }
 	  
