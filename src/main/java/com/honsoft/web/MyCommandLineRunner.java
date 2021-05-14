@@ -11,7 +11,7 @@ public class MyCommandLineRunner implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("CommandLineRunner Args: " + Arrays.toString(args));
-		
+		//data initialization
 	}
 
 }
